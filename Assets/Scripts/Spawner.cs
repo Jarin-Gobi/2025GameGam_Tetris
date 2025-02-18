@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(!GameManager.Instance.StartBoss)
+        if(!GameManager.Instance.StartBoss || !GameManager.Instance.player.damageable.IsAlive)
         {
             Spawn();
         }
@@ -25,12 +25,12 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        if (timer > spawnData[GameManager.Instance.level].spawnTime)
+        if (timer > spawnData[GameManager.Instance.Stage].spawnTime)
         {
             timer = 0;
-            GameObject enemy = GameManager.Instance.Pool.Get(Random.Range(0, GameManager.Instance.level + 1));
+            GameObject enemy = GameManager.Instance.Pool.Get(Random.Range(0, GameManager.Instance.Stage + 1));
             enemy.transform.position = spawnPoints[Random.Range(1, spawnPoints.Length)].position;
-            enemy.GetComponent<Enemy>().Init(spawnData[GameManager.Instance.level]);
+            enemy.GetComponent<Enemy>().Init(spawnData[GameManager.Instance.Stage]);
         }
     }
 }

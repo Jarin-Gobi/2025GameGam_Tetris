@@ -23,25 +23,29 @@ public class Enemy : MonoBehaviour
     {
         if (!damageable.IsAlive)
         {
+            GameManager.Instance.kill++;
+            GameManager.Instance.GetExp();
             Dead();
         }
 
 
-        if (!isKnockBacking)
+        if (isKnockBacking || !GameManager.Instance.player.damageable.IsAlive)
         {
-            Vector2 dirVec = target.position - rb.position;
-            Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + nextVec);
-            rb.velocity = Vector2.zero;
-
-            transform.right = -dirVec;
+            return;
         }
+        Vector2 dirVec = target.position - rb.position;
+        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + nextVec);
+        rb.velocity = Vector2.zero;
+
+        transform.right = -dirVec;
     }
 
     private void OnEnable()
     {
         target = GameManager.Instance.player.GetComponent<Rigidbody2D>();
         damageable.IsAlive = true;
+        isKnockBacking = false;
         damageable.Health = damageable.MaxHealth;
     }
 

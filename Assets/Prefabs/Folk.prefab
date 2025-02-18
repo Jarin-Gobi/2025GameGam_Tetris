@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7497950993457376459}
   - component: {fileID: -9060521173309310187}
   - component: {fileID: -4951889984585024967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Folk
   m_TagString: Enemy
   m_Icon: {fileID: 0}

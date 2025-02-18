@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1897698233443682492}
   - component: {fileID: -1260488967426350139}
   - component: {fileID: 1028576441650659637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: plate
   m_TagString: Enemy
   m_Icon: {fileID: 0}

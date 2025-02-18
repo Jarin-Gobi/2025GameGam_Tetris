@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] public int attackDamage = 1;
+    [SerializeField] public int attackDamage = 0;
     [SerializeField] public int knockback;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<Damageable>(out var damageable))
         {
-            bool gotHit = damageable.Hit(attackDamage, knockback, transform);
+            bool gotHit = damageable.Hit(attackDamage);
         }
     }
 

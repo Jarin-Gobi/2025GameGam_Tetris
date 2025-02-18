@@ -74,6 +74,20 @@ public class Damageable : MonoBehaviour
         return false;
     }
 
+    public bool Hit(int damage)
+    {
+        if (IsAlive)
+        {
+            if (gameObject.CompareTag("Player"))
+            {
+                GameManager.Instance.heartManager.ApplyHeart(damage);
+            }
+            Health -= damage;
+            return true;
+        }
+        return false;
+    }
+
     public void KnockBack(Transform PrevPos, int knockback)
     {
         backDir.x = transform.position.x - PrevPos.position.x > 0 ? 1 : -1;
@@ -90,6 +104,7 @@ public class Damageable : MonoBehaviour
             int maxHeal = Mathf.Max(MaxHealth - Health, 0);
             int actualHeal = Mathf.Min(maxHeal, healthRestore);
             Health += actualHeal;
+            GameManager.Instance.heartManager.Healheart(Health);
             return true;
         }
         return false;
