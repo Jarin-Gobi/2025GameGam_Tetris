@@ -46,6 +46,10 @@ public class Weapon : MonoBehaviour
         {
             Transform bullet = GameManager.Instance.Pool.Get(prefabId).transform;
             bullet.parent = transform;
+
+            Vector3 rotVec = Vector3.forward * 360 * i / count;
+            bullet.Rotate(rotVec);
+            bullet.Translate(bullet.up * 1.5f, Space.World);
         }
     }
 }
