@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3407b37d4d0de8f4487de4bd89955620, type: 3}
-  m_Name: Item 1
+  m_Name: Item 3
   m_EditorClassIdentifier: 
-  itemtype: 2
-  itemId: 1
-  itemName: "\uD53C\uB9DD"
+  itemtype: 6
+  itemId: 3
+  itemName: "\uD1A0\uB9C8\uD1A0\uC18C\uC2A4"
   itemDesc: 
-  itemIcon: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
+  itemIcon: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   baseDamage: 2
   baseCount: 0
   damages:
-  - 1
   - 2
-  - 4
-  counts: 010000000100000002000000
-  projectile: {fileID: 4289476781958611461, guid: 80b5c58b592de344fb7d04d68dfcce55, type: 3}
+  - 5
+  - 10
+  counts: 000000000100000002000000
+  projectile: {fileID: 0}

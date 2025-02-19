@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] public int attackDamage = 0;
+    [SerializeField] public float attackDamage = 0;
     [SerializeField] public int knockback;
 
     private void OnCollisionEnter2D(Collision2D collision)

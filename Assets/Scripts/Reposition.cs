@@ -31,11 +31,11 @@ public class Reposition : MonoBehaviour
             case "Ground":
                 if(diffX > diffY * 2)
                 {
-                    transform.Translate(Vector3.right * dirX * 44);
+                    transform.Translate(Vector3.right * dirX * 38.75f);
                 }
                 else if(diffX < diffY * 2)
                 {
-                    transform.Translate(Vector3.up * dirY * 22);
+                    transform.Translate(Vector3.up * dirY * 21.25f);
                 }
                 break;
             case "Enemy":

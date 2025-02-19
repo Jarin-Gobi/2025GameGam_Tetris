@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsMoving", value);
         }
     }
+
+
+
     private void FixedUpdate()
     {
         if(damageable.IsAlive)

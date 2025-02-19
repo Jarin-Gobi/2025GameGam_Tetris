@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] Prefabs;
+    [SerializeField] public GameObject[] Prefabs;
 
     private List<GameObject>[] pools;
 

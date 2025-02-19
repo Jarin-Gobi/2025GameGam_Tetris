@@ -6,15 +6,20 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     // public UnityEvent<int, Vector2> damageableHit;
-    [SerializeField] private int _maxHealth = 10;
+    [SerializeField] private float _maxHealth = 10;
     private Rigidbody2D _rb;
     private Vector2 backDir;
     public Rigidbody2D rb => _rb ??= GetComponent<Rigidbody2D>();
 
     private Enemy _enemy;
     public Enemy enemy => _enemy ??= GetComponent<Enemy>();
+    private Animator animator;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
-    public int MaxHealth
+    public float MaxHealth
     {
         get
         {
@@ -26,9 +31,9 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    [SerializeField] private int _health = 10;
+    [SerializeField] private float _health = 10;
 
-    public int Health
+    public float Health
     {
         get
         {
@@ -59,7 +64,7 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    public bool Hit(int damage, int knockback, Transform tr)
+    public bool Hit(float damage, int knockback, Transform tr)
     {
         if (IsAlive)
         {
@@ -74,7 +79,7 @@ public class Damageable : MonoBehaviour
         return false;
     }
 
-    public bool Hit(int damage)
+    public bool Hit(float damage)
     {
         if (IsAlive)
         {
@@ -83,6 +88,10 @@ public class Damageable : MonoBehaviour
                 GameManager.Instance.heartManager.ApplyHeart(damage);
             }
             Health -= damage;
+            if (animator != null)
+            {
+                animator.SetTrigger("Hit");
+            }
             return true;
         }
         return false;
@@ -97,14 +106,14 @@ public class Damageable : MonoBehaviour
         StartCoroutine(enemy.KnockBackCo());
     }
 
-    public bool Heal(int healthRestore)
+    public bool Heal(float healthRestore)
     {
         if (IsAlive && Health < MaxHealth)
         {
-            int maxHeal = Mathf.Max(MaxHealth - Health, 0);
-            int actualHeal = Mathf.Min(maxHeal, healthRestore);
+            float maxHeal = Mathf.Max(MaxHealth - Health, 0);
+            float actualHeal = Mathf.Min(maxHeal, healthRestore);
+            GameManager.Instance.heartManager.Healheart(Health + actualHeal);
             Health += actualHeal;
-            GameManager.Instance.heartManager.Healheart(Health);
             return true;
         }
         return false;

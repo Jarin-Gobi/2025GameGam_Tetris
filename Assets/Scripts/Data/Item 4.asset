@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3407b37d4d0de8f4487de4bd89955620, type: 3}
-  m_Name: Item 1
+  m_Name: Item 4
   m_EditorClassIdentifier: 
-  itemtype: 2
-  itemId: 1
-  itemName: "\uD53C\uB9DD"
+  itemtype: 3
+  itemId: 4
+  itemName: "\uD30C\uC778\uC560\uD50C"
   itemDesc: 
-  itemIcon: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
+  itemIcon: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
   baseDamage: 2
   baseCount: 0
   damages:
@@ -24,4 +24,4 @@ MonoBehaviour:
   - 2
   - 4
   counts: 010000000100000002000000
-  projectile: {fileID: 4289476781958611461, guid: 80b5c58b592de344fb7d04d68dfcce55, type: 3}
+  projectile: {fileID: 1971519579219873857, guid: 26e3153e6aca13048bfcd46af3b70a4c, type: 3}

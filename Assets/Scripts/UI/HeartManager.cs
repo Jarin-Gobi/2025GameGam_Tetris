@@ -43,7 +43,7 @@ public class HeartManager : MonoBehaviour
     {
         for (int i = (int)GameManager.Instance.player.damageable.Health - 1; i >= (int)GameManager.Instance.player.damageable.Health - damage; i--)
         {
-            if((float)i / 2 - i / 2 == 0.5f)
+            if(i % 2 != 0)
             {
                 hearts[i / 2].sprite = heartSprites[Half];
             }
@@ -58,13 +58,13 @@ public class HeartManager : MonoBehaviour
     {
         for(int i = (int)GameManager.Instance.player.damageable.Health - 1; i <= Heal - 1; i++)
         {
-            if((float)i / 2 - i / 2 == 0.5f)
+            if(i % 2 == 0)
             {
-                hearts[i / 2].sprite = heartSprites[Full];
+                hearts[i / 2].sprite = heartSprites[Half];
             }
             else
             {
-                hearts[i / 2].sprite = heartSprites[Half];
+                hearts[i / 2].sprite = heartSprites[Full];
             }
         }
     }

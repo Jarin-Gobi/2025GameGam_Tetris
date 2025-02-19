@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
 {
     public int id;
     public int prefabId;
-    public int damage;
+    public float damage;
     public int count;
     public float speed;
 
@@ -17,13 +17,9 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        player = GetComponentInParent<PlayerController>();
+        player = GameManager.Instance.player;
     }
 
-    private void Start()
-    {
-        Init();
-    }
 
     private void Update()
     {
@@ -44,22 +40,42 @@ public class Weapon : MonoBehaviour
     }
 
 
-    public void LevelUp(int count, int damage)
+    public void LevelUp(int count, float damage)
     {
-        attack.attackDamage += damage;
+        this.damage += damage;
         this.count += count;
-        if(id == 0)
+        if (id == 0)
         {
             Batch();
         }
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GetComponentsInChildren<Attack>()[i].attackDamage += damage;
+        }
     }
 
-    public void Init()
+    public void Init(ItemData data)
     {
+        name = "Weapon" + data.itemId;
+        transform.parent = player.transform;
+        transform.localPosition = Vector3.zero;
+
+        id = data.itemId;
+        damage = data.baseDamage;
+        count = data.baseCount;
+
+        for (int i = 0; i < GameManager.Instance.Pool.Prefabs.Length; i++)
+        {
+            if(data.projectile == GameManager.Instance.Pool.Prefabs[i])
+            {
+                prefabId = i;
+                break;
+            }
+        }
         switch (id)
         {
             case 0:
-                speed = -150;
+                speed = 150;
                 Batch();
                 break;
             default:
@@ -76,23 +92,22 @@ public class Weapon : MonoBehaviour
             if (i < transform.childCount)
             {
                 bullet = transform.GetChild(i);
-                attack = GetComponentInChildren<Attack>();
-                attack.attackDamage = damage;
             }
             else
             {
                 bullet = GameManager.Instance.Pool.Get(prefabId).transform;
                 bullet.parent = transform;
-                attack = GetComponentInChildren<Attack>();
-                attack.attackDamage = damage;
             }
 
+
+            attack = bullet.GetComponent<Attack>();
+            attack.attackDamage = damage;
             bullet.localPosition = Vector3.zero;
             bullet.localRotation = Quaternion.identity;
 
             Vector3 rotVec = Vector3.forward * 360 * i / count;
             bullet.Rotate(rotVec);
-            bullet.Translate(bullet.up * 1.5f, Space.World);
+            bullet.Translate(bullet.up * 2f, Space.World);
         }
     }
 
