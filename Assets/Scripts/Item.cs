@@ -31,7 +31,22 @@ public class Item : MonoBehaviour
     private void OnEnable()
     {
         textLevel.text = "Lv." + (level + 1);
-        switch
+        switch (data.itemtype)
+        {
+            case ItemData.Itemtype.Pepperoni:
+            case ItemData.Itemtype.Pineapple:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);
+                break;
+            case ItemData.Itemtype.Mushroom:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
+                break;
+            case ItemData.Itemtype.Tomato:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level]);
+                break;
+            default:
+                textDesc.text = string.Format(data.itemDesc);
+                break;
+        }
     }
 
     public void OnClick()
@@ -52,10 +67,12 @@ public class Item : MonoBehaviour
                 {
                     float nextDamage = data.baseDamage;
                     int nextCount = 0;
+                    float nextSpeed = data.baseSpeed;
 
                     nextDamage += data.baseDamage * data.damages[level];
                     nextCount += data.counts[level];
-                    weapon.LevelUp(nextCount, nextDamage);
+                    nextSpeed += data.baseSpeed + data.speeds[level];
+                    weapon.LevelUp(nextCount, nextDamage, nextSpeed);
                 }
                 break;
             case ItemData.Itemtype.Olive:
@@ -83,9 +100,11 @@ public class Item : MonoBehaviour
                 else
                 {
                     int nextCount = 0;
+                    float nextSpeed = data.baseSpeed;
 
                     nextCount += data.counts[level];
-                    weapon.LevelUp(nextCount, 0);
+                    nextSpeed += data.speeds[level];
+                    weapon.LevelUp(nextCount, 0, nextSpeed);
                 }
                 break;
             case ItemData.Itemtype.Tomato:

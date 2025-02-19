@@ -40,10 +40,11 @@ public class Weapon : MonoBehaviour
     }
 
 
-    public void LevelUp(int count, float damage)
+    public void LevelUp(int count, float damage, float speed)
     {
         this.damage += damage;
         this.count += count;
+        this.speed = speed;
         if (id == 0)
         {
             Batch();
@@ -63,6 +64,7 @@ public class Weapon : MonoBehaviour
         id = data.itemId;
         damage = data.baseDamage;
         count = data.baseCount;
+        speed = data.baseSpeed;
 
         for (int i = 0; i < GameManager.Instance.Pool.Prefabs.Length; i++)
         {
@@ -75,11 +77,9 @@ public class Weapon : MonoBehaviour
         switch (id)
         {
             case 0:
-                speed = 150;
                 Batch();
                 break;
             default:
-                speed = 0.3f;
                 break;
         }
     }

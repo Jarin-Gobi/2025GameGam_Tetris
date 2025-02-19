@@ -16,12 +16,17 @@ MonoBehaviour:
   itemId: 1
   itemName: "\uD53C\uB9DD"
   itemDesc: 
-  itemIcon: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
+  itemIcon: {fileID: 21300000, guid: 6067c6c3cef4dfc4b90ba16ee152013a, type: 3}
   baseDamage: 2
   baseCount: 0
+  baseSpeed: 1
   damages:
   - 1
   - 2
   - 4
-  counts: 010000000100000002000000
+  counts: 000000000000000000000000
+  speeds:
+  - -0.1
+  - -0.2
+  - -0.3
   projectile: {fileID: 4289476781958611461, guid: 80b5c58b592de344fb7d04d68dfcce55, type: 3}

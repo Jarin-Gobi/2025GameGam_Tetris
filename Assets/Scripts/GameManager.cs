@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PoolManager Pool;
     [SerializeField] public HeartManager heartManager;
     [SerializeField] public PlayerController player;
+    [SerializeField] public LevelUp uiLevelUP;
 
     [Header("Game Control")]
     [SerializeField] public bool StartBoss = false;
