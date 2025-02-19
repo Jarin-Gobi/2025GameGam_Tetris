@@ -10,6 +10,10 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.isLive)
+        {
+            return;
+        }
         elapsedTime += Time.deltaTime;
         int min = Mathf.FloorToInt(elapsedTime / 60);
         int sec = Mathf.FloorToInt(elapsedTime % 60);

@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!GameManager.Instance.isLive)
+        {
+            return;
+        }
         if(damageable.IsAlive)
         {
             Vector2 nextVec = inputVec * speed * Time.fixedDeltaTime;
@@ -55,6 +59,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
+        if (!GameManager.Instance.isLive)
+        {
+            return;
+        }
         inputVec = value.Get<Vector2>();
         if (!damageable.IsAlive)
         {

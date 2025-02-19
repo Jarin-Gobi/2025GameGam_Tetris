@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         }
 
 
-        if (isKnockBacking || !GameManager.Instance.player.damageable.IsAlive)
+        if (isKnockBacking || !GameManager.Instance.player.damageable.IsAlive || !GameManager.Instance.isLive)
         {
             return;
         }
