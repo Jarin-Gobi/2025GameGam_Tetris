@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Stopbutton : MonoBehaviour
 {
     RectTransform rec;
+    [SerializeField] public Image image;
 
     private void Awake()
     {
@@ -15,6 +16,12 @@ public class Stopbutton : MonoBehaviour
     {
         rec.localScale = Vector3.one;
         GameManager.Instance.Stop();
+    }
+
+    public void Tutorial()
+    {
+        image.rectTransform.localScale = Vector3.one;
+        rec.localScale = Vector3.zero;
     }
 
     public void Restart()

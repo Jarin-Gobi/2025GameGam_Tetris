@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemtype: 4
   itemId: 6
-  itemName: "\uC62C\uB9AC\uBE0C"
-  itemDesc: "\uAD00\uD1B5\uD558\uB294 \uD22C\uC0AC\uCCB4\uB97C\n\uC790\uB3D9 \uBC1C\uC0AC\uD569\uB2C8\uB2E4.\r\n\uB370\uBBF8\uC9C0
+  itemName: "\uD53C\uB9DD"
+  itemDesc: "\uC801\uC744 \uAD00\uD1B5\uD558\uB294 \uD53C\uB9DD\uC744\n\uBC1C\uC0AC\uD569\uB2C8\uB2E4.\r\n\uB370\uBBF8\uC9C0
     {0}% \uC99D\uAC00\n\uAD00\uD1B5\uD329 {1} \uCD94\uAC00"
-  itemIcon: {fileID: 21300000, guid: 162963b161bed1b48b6dbe73efb9c2a5, type: 3}
+  itemIcon: {fileID: 21300000, guid: 6929a6e183729b346b41927a3b60839e, type: 3}
   baseDamage: 0.5
   baseCount: 0
   baseSpeed: 1
@@ -30,4 +30,4 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  projectile: {fileID: 3384751551373871616, guid: 7c6a28e790485704c98f4b39681d7494, type: 3}
+  projectile: {fileID: 4289476781958611461, guid: 80b5c58b592de344fb7d04d68dfcce55, type: 3}

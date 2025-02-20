@@ -7,7 +7,7 @@ public class ItemData : ScriptableObject
 { 
     public enum Itemtype
     {
-        Cheeze, Pepperoni, Pimento, Pineapple, Olive, Mushroom, Tomato
+        Cheeze, Pepperoni, Olive, Pineapple, Pimento, Mushroom, Tomato
     }
 
     [Header("Main Info")]

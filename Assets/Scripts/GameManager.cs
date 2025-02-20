@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float[] BossTime;
     [SerializeField] public GameObject[] Boss;
     [SerializeField] public BossManager BM;
+    [SerializeField] public Ground[] grounds;
+    [SerializeField] public ShowBoss showBoss;
 
     [Header("Player Info")]
     public int level;
@@ -55,12 +57,14 @@ public class GameManager : MonoBehaviour
         {
             BM.SpawnB();
             StartBoss = true;
+            showBoss.StartCoroutine("ShowAndHide");
         }
     }
 
     private void Start()
     {
         uiLevelUP.Select(5);
+        uiLevelUP.Select(2);
     }
 
     public void GetExp()

@@ -30,11 +30,10 @@ public class Item : MonoBehaviour
 
     private void OnEnable()
     {
-        textLevel.text = "Lv." + (level + 1);
         switch (data.itemtype)
         {
             case ItemData.Itemtype.Pepperoni:
-            case ItemData.Itemtype.Olive:
+            case ItemData.Itemtype.Pimento:
                 textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);
                 break;
             case ItemData.Itemtype.Mushroom:
@@ -43,17 +42,17 @@ public class Item : MonoBehaviour
                 textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
                 break;
             case ItemData.Itemtype.Tomato:
-                if (level >= data.damages.Length)
-                    level = data.damages.Length - 1;
-                textDesc.text = string.Format(data.itemDesc, data.damages[level]);
+                level = 0;
+                textDesc.text = string.Format(data.itemDesc);
                 break;
-            case ItemData.Itemtype.Pimento:
+            case ItemData.Itemtype.Olive:
                 textDesc.text = string.Format(data.itemDesc, data.speeds[level]);
                 break;
             default:
                 textDesc.text = string.Format(data.itemDesc);
                 break;
         }
+        textLevel.text = "Lv." + (level + 1);
     }
 
     public void OnClick()
@@ -89,7 +88,7 @@ public class Item : MonoBehaviour
                     GetComponent<Button>().interactable = false;
                 }
                 break;
-            case ItemData.Itemtype.Olive:
+            case ItemData.Itemtype.Pimento:
             case ItemData.Itemtype.Pineapple:
             case ItemData.Itemtype.Pepperoni:
                 if(level == 0)
@@ -145,7 +144,7 @@ public class Item : MonoBehaviour
                     GetComponent<Button>().interactable = false;
                 }
                 break;
-            case ItemData.Itemtype.Pimento:
+            case ItemData.Itemtype.Olive:
                 if (level == 0)
                 {
                     GameManager.Instance.player.OnTopping(data.itemId);
@@ -183,14 +182,7 @@ public class Item : MonoBehaviour
                         GameManager.Instance.ItemVolum++;
                     }
                 }
-                if(level < 3)
-                {
-                    GameManager.Instance.player.damageable.Heal(data.damages[level]);
-                }
-                else
-                {
-                    GameManager.Instance.player.damageable.Heal(data.damages[2]);
-                }
+                GameManager.Instance.player.damageable.Heal(4);
                 break;
         }
 

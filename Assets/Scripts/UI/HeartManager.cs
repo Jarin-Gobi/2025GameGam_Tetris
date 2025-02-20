@@ -43,6 +43,11 @@ public class HeartManager : MonoBehaviour
     {
         for (int i = (int)GameManager.Instance.player.damageable.Health - 1; i >= (int)GameManager.Instance.player.damageable.Health - damage; i--)
         {
+            if(i < 0)
+            {
+                GameManager.Instance.player.damageable.IsAlive = false;
+                return;
+            }
             if(i % 2 != 0)
             {
                 hearts[i / 2].sprite = heartSprites[Half];
