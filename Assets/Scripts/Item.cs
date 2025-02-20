@@ -43,6 +43,8 @@ public class Item : MonoBehaviour
                 textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
                 break;
             case ItemData.Itemtype.Tomato:
+                if (level >= data.damages.Length)
+                    level = data.damages.Length - 1;
                 textDesc.text = string.Format(data.itemDesc, data.damages[level]);
                 break;
             case ItemData.Itemtype.Pimento:
@@ -59,11 +61,40 @@ public class Item : MonoBehaviour
         switch (data.itemtype)
         {
             case ItemData.Itemtype.Cheeze:
+                if (level == 0)
+                {
+                    if (GameManager.Instance.ItemIcons.Count > 0)
+                    {
+                        GameManager.Instance.ItemIcons[GameManager.Instance.ItemVolum] = icon;
+                        GameManager.Instance.itemArray.ShowIcone(GameManager.Instance.ItemVolum);
+                        GameManager.Instance.ItemVolum++;
+                    }
+                    GameObject newWeapon = new GameObject();
+                    weapon = newWeapon.AddComponent<Weapon>();
+                    weapon.Init(data);
+                }
+                else
+                {
+                    float nextDamage = data.baseDamage;
+                    int nextCount = 0;
+                    float nextSpeed = data.baseSpeed;
+
+                    nextDamage += data.baseDamage * data.damages[level];
+                    nextCount += data.counts[level];
+                    nextSpeed += data.baseSpeed + data.speeds[level];
+                    weapon.LevelUp(nextCount, nextDamage, nextSpeed);
+                }
+                if (level == data.damages.Length)
+                {
+                    GetComponent<Button>().interactable = false;
+                }
+                break;
             case ItemData.Itemtype.Olive:
             case ItemData.Itemtype.Pineapple:
             case ItemData.Itemtype.Pepperoni:
                 if(level == 0)
                 {
+                    GameManager.Instance.player.OnTopping(data.itemId);
                     if (GameManager.Instance.ItemIcons.Count > 0)
                     {
                         GameManager.Instance.ItemIcons[GameManager.Instance.ItemVolum] = icon;
@@ -93,6 +124,7 @@ public class Item : MonoBehaviour
             case ItemData.Itemtype.Mushroom:
                 if(level == 0)
                 {
+                    GameManager.Instance.player.OnTopping(data.itemId);
                     if (GameManager.Instance.ItemIcons.Count > 0)
                     {
                         GameManager.Instance.ItemIcons[GameManager.Instance.ItemVolum] = icon;
@@ -116,6 +148,7 @@ public class Item : MonoBehaviour
             case ItemData.Itemtype.Pimento:
                 if (level == 0)
                 {
+                    GameManager.Instance.player.OnTopping(data.itemId);
                     if (GameManager.Instance.ItemIcons.Count > 0)
                     {
                         GameManager.Instance.ItemIcons[GameManager.Instance.ItemVolum] = icon;
@@ -150,7 +183,14 @@ public class Item : MonoBehaviour
                         GameManager.Instance.ItemVolum++;
                     }
                 }
-                GameManager.Instance.player.damageable.Heal(data.damages[level]);
+                if(level < 3)
+                {
+                    GameManager.Instance.player.damageable.Heal(data.damages[level]);
+                }
+                else
+                {
+                    GameManager.Instance.player.damageable.Heal(data.damages[2]);
+                }
                 break;
         }
 

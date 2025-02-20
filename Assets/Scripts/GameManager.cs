@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool isLive = true;
     [SerializeField] public bool StartBoss = false;
     [SerializeField] public int Stage = 0;
+    public float gameTime;
+    [SerializeField] public float[] BossTime;
+    [SerializeField] public GameObject[] Boss;
+    [SerializeField] public BossManager BM;
 
     [Header("Player Info")]
     public int level;
@@ -31,12 +35,27 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        isLive = true;
     }
 
     private void Update()
     {
-        
+        if(!isLive)
+        {
+            return;
+        }
+        if (!StartBoss)
+        {
+            gameTime += Time.deltaTime;
+        }
+        else
+        {
+            gameTime = 0;
+        }
+        if(gameTime > BossTime[Stage])
+        {
+            BM.SpawnB();
+            StartBoss = true;
+        }
     }
 
     private void Start()
@@ -59,6 +78,7 @@ public class GameManager : MonoBehaviour
     {
         isLive = false;
         Time.timeScale = 0;
+        player.inputVec = Vector3.zero;
     }
 
     public void Resume()

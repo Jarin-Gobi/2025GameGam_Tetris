@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Scanner scanner;
     private Animator animator;
     public Damageable damageable;
+    [SerializeField] public GameObject[] toppings;
 
     Rigidbody2D rb;
     Vector2 prevPos = Vector2.zero;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
     }
-    private bool _isMoving = false;
+    public bool _isMoving = false;
 
     public bool IsMoving
     {
@@ -53,14 +54,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(2);  // 게임오버 테스트
+            SceneManager.LoadScene(2);
         }
+       
     }
 
     private void OnMove(InputValue value)
     {
         if (!GameManager.Instance.isLive)
         {
+            IsMoving = false;
             return;
         }
         inputVec = value.Get<Vector2>();
@@ -69,5 +72,11 @@ public class PlayerController : MonoBehaviour
             IsMoving = false;
         }
         else IsMoving = inputVec != Vector2.zero;
+    }
+
+    public void OnTopping(int id)
+    {
+        if (toppings[id] != null)
+            toppings[id].SetActive(true);
     }
 }

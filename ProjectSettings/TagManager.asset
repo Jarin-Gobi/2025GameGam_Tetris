@@ -8,6 +8,9 @@ TagManager:
   - Area
   - Enemy
   - Weapon
+  - EnemyP
+  - PlayerSpawner
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -50,6 +53,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 2135306489
+    locked: 0
+  - name: Boss
+    uniqueID: 3988143307
     locked: 0
   - name: Player
     uniqueID: 2373658481

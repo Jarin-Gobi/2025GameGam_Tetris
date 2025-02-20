@@ -15,18 +15,19 @@ MonoBehaviour:
   itemtype: 2
   itemId: 1
   itemName: "\uD53C\uB9DD"
-  itemDesc: "\uACF5\uC18D {0}\uCD08"
+  itemDesc: "\uD22C\uC0AC\uCCB4\uB97C \uC790\uB3D9 \uBC1C\uC0AC\uD569\uB2C8\uB2E4.\n\uACF5\uC18D
+    {0}\uCD08"
   itemIcon: {fileID: 21300000, guid: 6067c6c3cef4dfc4b90ba16ee152013a, type: 3}
-  baseDamage: 2
+  baseDamage: 0.5
   baseCount: 0
   baseSpeed: 1
   damages:
-  - 1
-  - 2
-  - 4
+  - 0
+  - 0
+  - 0
   counts: 000000000000000000000000
   speeds:
   - -0.1
-  - -0.2
-  - -0.3
+  - -0.5
+  - -0.75
   projectile: {fileID: 4289476781958611461, guid: 80b5c58b592de344fb7d04d68dfcce55, type: 3}

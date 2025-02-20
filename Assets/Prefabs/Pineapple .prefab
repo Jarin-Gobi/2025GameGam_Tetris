@@ -75,10 +75,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 68645883
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.9529657, g: 1, b: 0.3726415, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 29441e4c76bbba044a0e205984e2602c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,8 +120,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.25, y: 0.01}
+  m_Size: {x: 0.76, y: 0.76}
   m_Direction: 0
 --- !u!114 &7921269290639539479
 MonoBehaviour:
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 0
-  knockback: 1
+  knockback: 0
 --- !u!50 &7255922024913045926
 Rigidbody2D:
   serializedVersion: 4

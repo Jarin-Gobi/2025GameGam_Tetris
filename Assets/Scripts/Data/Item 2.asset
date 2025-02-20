@@ -22,9 +22,9 @@ MonoBehaviour:
   baseSpeed: 0
   damages:
   - 0.1
-  - 0.2
-  - 0.3
-  counts: 000000000100000002000000
+  - 0.5
+  - 1
+  counts: 000000000000000000000000
   speeds:
   - 0
   - 0

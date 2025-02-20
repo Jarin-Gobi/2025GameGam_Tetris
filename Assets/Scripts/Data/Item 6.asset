@@ -15,15 +15,16 @@ MonoBehaviour:
   itemtype: 4
   itemId: 6
   itemName: "\uC62C\uB9AC\uBE0C"
-  itemDesc: "\uB370\uBBF8\uC9C0 {0}% \uC99D\uAC00\n\uAD00\uD1B5\uD329 {1} \uCD94\uAC00"
-  itemIcon: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  baseDamage: 2
+  itemDesc: "\uAD00\uD1B5\uD558\uB294 \uD22C\uC0AC\uCCB4\uB97C\n\uC790\uB3D9 \uBC1C\uC0AC\uD569\uB2C8\uB2E4.\r\n\uB370\uBBF8\uC9C0
+    {0}% \uC99D\uAC00\n\uAD00\uD1B5\uD329 {1} \uCD94\uAC00"
+  itemIcon: {fileID: 21300000, guid: 162963b161bed1b48b6dbe73efb9c2a5, type: 3}
+  baseDamage: 0.5
   baseCount: 0
-  baseSpeed: 0.5
+  baseSpeed: 1
   damages:
-  - 1
+  - 0
+  - 0
   - 2
-  - 4
   counts: 010000000100000002000000
   speeds:
   - 0

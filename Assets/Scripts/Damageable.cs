@@ -70,7 +70,7 @@ public class Damageable : MonoBehaviour
         {
             Health -= damage;
             // damageableHit?.Invoke(damage, knockback);
-            if (enemy != null)
+            if (enemy != null && knockback != 0)
             {
                 KnockBack(tr, knockback);
             }
@@ -86,12 +86,9 @@ public class Damageable : MonoBehaviour
             if (gameObject.CompareTag("Player"))
             {
                 GameManager.Instance.heartManager.ApplyHeart(damage);
-            }
-            Health -= damage;
-            if (animator != null)
-            {
                 animator.SetTrigger("Hit");
             }
+            Health -= damage;
             return true;
         }
         return false;

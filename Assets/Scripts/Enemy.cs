@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D target;
     private Damageable damageable;
+    SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
 
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         damageable = GetComponent<Damageable>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -33,12 +35,35 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        Vector2 dirVec = target.position - rb.position;
-        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + nextVec);
-        rb.velocity = Vector2.zero;
+        if (gameObject.CompareTag("Enemy"))
+        {
+            Vector2 dirVec = target.position - rb.position;
+            Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + nextVec);
+            rb.velocity = Vector2.zero;
 
-        transform.right = -dirVec;
+            transform.right = -dirVec;
+        }
+        else
+        {
+            Vector2 dirVec = target.position - rb.position;
+            Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + nextVec);
+            rb.velocity = Vector2.zero;
+        }
+        
+    }
+
+    private void LateUpdate()
+    {
+        if (!GameManager.Instance.isLive)
+        {
+            return;
+        }
+        if (gameObject.CompareTag("EnemyP"))
+        {
+            spriteRenderer.flipX = target.position.x < rb.position.x;
+        }
     }
 
     private void OnEnable()
