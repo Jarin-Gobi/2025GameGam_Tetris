@@ -8,6 +8,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] GameObject Boss;
     public void SpawnB()
     {
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.BossSpawn);
         Boss = Instantiate(GameManager.Instance.Boss[GameManager.Instance.Stage], GetRandomPosition(), Quaternion.identity);
     }
     private void OnTriggerExit2D(Collider2D collision)

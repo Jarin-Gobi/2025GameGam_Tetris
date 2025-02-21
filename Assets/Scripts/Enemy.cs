@@ -83,6 +83,7 @@ public class Enemy : MonoBehaviour
 
     public void Dead()
     {
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.MonsterDeath);
         gameObject.SetActive(false);
     }
 

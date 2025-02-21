@@ -17,6 +17,17 @@ public class DownFolk : MonoBehaviour
 
     private void Start()
     {
-        rec.DOMoveY(FolkDown, FolkTime);
+        BadEndingAudio.instance.PlayBGM(true, 0);
+        BadEndingAudio.instance.PlayBGM(true, 1);
+        BadEndingAudio.instance.PlayBGM(true, 2);
+        StartCoroutine("Audio");
+    }
+
+    IEnumerator Audio()
+    {
+        yield return new WaitForSeconds(0.1f);
+        BadEndingAudio.instance.PlaySFX(BadEndingAudio.Sfx.FolkDown1);
+        yield return new WaitForSeconds(0.1f);
+        BadEndingAudio.instance.PlaySFX(BadEndingAudio.Sfx.FolkDown2);
     }
 }

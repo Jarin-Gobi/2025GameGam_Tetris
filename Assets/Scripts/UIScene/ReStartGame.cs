@@ -7,11 +7,25 @@ public class ReStartGame : MonoBehaviour
 {
     public void ReStart()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine("restart");
     }
 
     public void GoHome()
     {
+        StartCoroutine("gohome");
+    }
+
+    IEnumerator restart()
+    {
+        BadEndingAudio.instance.PlaySFX(BadEndingAudio.Sfx.button);
+        yield return new WaitForSeconds(0.02f);
+        SceneManager.LoadScene(1);
+    }
+
+    IEnumerator gohome()
+    {
+        BadEndingAudio.instance.PlaySFX(BadEndingAudio.Sfx.button);
+        yield return new WaitForSeconds(0.02f);
         SceneManager.LoadScene(0);
     }
 }

@@ -85,8 +85,13 @@ public class Damageable : MonoBehaviour
         {
             if (gameObject.CompareTag("Player"))
             {
+                AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerHit);
                 GameManager.Instance.heartManager.ApplyHeart(damage);
                 animator.SetTrigger("Hit");
+            }
+            else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("EnemyP") || gameObject.CompareTag("Boss"))
+            {
+                AudioManager.instance.PlaySFX(AudioManager.Sfx.MonsterHit);
             }
             Health -= damage;
             return true;

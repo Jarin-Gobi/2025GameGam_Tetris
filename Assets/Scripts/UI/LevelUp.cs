@@ -21,6 +21,7 @@ public class LevelUp : MonoBehaviour
 
     public void hide()
     {
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.Button);
         rect.localScale = Vector3.zero;
         GameManager.Instance.Resume();
     }

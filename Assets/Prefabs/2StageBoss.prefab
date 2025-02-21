@@ -303,7 +303,7 @@ MonoBehaviour:
   - spawnTime: 1
     health: 5
     speed: 2
-  - spawnTime: 1
+  - spawnTime: 0.9
     health: 3
     speed: 2.5
   - spawnTime: 1

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public BossManager BM;
     [SerializeField] public Ground[] grounds;
     [SerializeField] public ShowBoss showBoss;
+    [SerializeField] public ShowEnding showE;
 
     [Header("Player Info")]
     public int level;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+
 
     private void Update()
     {
@@ -64,7 +66,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         uiLevelUP.Select(5);
-        uiLevelUP.Select(2);
+        AudioManager.instance.PlayBGM(true, Stage);
     }
 
     public void GetExp()
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
         exp++;
         if(exp == nextExp[Mathf.Min(level, nextExp.Length - 1)])
         {
+            AudioManager.instance.PlaySFX(AudioManager.Sfx.LevelUp);
             level++;
             exp = 0;
             uiLevelUP.show();

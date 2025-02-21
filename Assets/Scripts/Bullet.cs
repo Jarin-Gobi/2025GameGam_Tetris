@@ -31,6 +31,9 @@ public class Bullet : MonoBehaviour
             if (collision.CompareTag("EnemyP"))
             {
             }
+            else if (collision.CompareTag("Boss"))
+            {
+            }
             else
             {
                 return;

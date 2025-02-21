@@ -582,7 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints: []
   spawnData:
-  - spawnTime: 1.5
+  - spawnTime: 1
     health: 2
     speed: 2
   - spawnTime: 1

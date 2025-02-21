@@ -13,7 +13,7 @@ public class ShowBoss : MonoBehaviour
     public IEnumerator ShowAndHide()
     {
         rectTransform.localScale = Vector3.one;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         rectTransform.localScale = Vector3.zero;
     }
 }

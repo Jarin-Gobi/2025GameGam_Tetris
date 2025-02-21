@@ -54,9 +54,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(2);
+            AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerDeath);
+            GameManager.Instance.isLive = false;
+            GameManager.Instance.showE.StartCoroutine("BadEnding");
         }
-       
+
     }
 
     private void OnMove(InputValue value)

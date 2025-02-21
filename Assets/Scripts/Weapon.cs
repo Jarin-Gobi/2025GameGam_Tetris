@@ -131,5 +131,6 @@ public class Weapon : MonoBehaviour
         bullet.GetComponent<Bullet>().Init(count, dir);
         attack = bullet.GetComponent<Attack>();
         attack.attackDamage = damage;
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.Attack);
     }
 }

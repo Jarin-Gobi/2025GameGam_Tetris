@@ -42,7 +42,6 @@ public class Item : MonoBehaviour
                 textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
                 break;
             case ItemData.Itemtype.Tomato:
-                level = 0;
                 textDesc.text = string.Format(data.itemDesc);
                 break;
             case ItemData.Itemtype.Olive:
